@@ -40,7 +40,7 @@ function startSearch(){
     var error = document.createElement("p");
 
     if (navigator.geolocation) {
-        error.textContent = "geo location does work";
+        navigator.geolocation.getCurrentPosition(showPosition);
     }
     else{
         error.textContent = "geo location doesnt work";
@@ -107,8 +107,9 @@ function startSearch(){
 
             for (var i = 0; i < 10; i++) {
                 place = places[i];
-
-                console.log(place);
+                sessionStorage.setItem("placeId" + i, place.place_id);
+                sessionStorage.setItem("placeLat" + i, place.geometry.location.lat);
+                sessionStorage.setItem("placeLng" + i, place.geometry.location.lng);
 
                 //place.icon
                 var photos = place.photos;
@@ -118,20 +119,18 @@ function startSearch(){
                 }
 
                 var img = document.createElement("img");
-
-                var li = document.createElement('li');
                 var div_ = document.createElement("div");
-                var restaurantPage = document.createElement('a');
+                var restaurantPage = document.createElement('button');
 
-                li.textContent = place.name;
-
-                restaurantPage.href = "map.html";
-                restaurantPage.appendChild(img);
 
                 var ImgSrc = place.photos[0].getUrl();
-                img.src =ImgSrc;
+                img.src=ImgSrc;
 
-                div_.appendChild(li);
+                restaurantPage.style.backgroundImage="url(" + ImgSrc + ")";
+                restaurantPage.className="links";
+                restaurantPage.textContent=place.name;
+                restaurantPage.value=i;
+
                 div_.appendChild(restaurantPage);
 
                 placesList.appendChild(div_);
