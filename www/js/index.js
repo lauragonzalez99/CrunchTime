@@ -35,10 +35,12 @@ function startSearch(){
     navigator.geolocation;
     var placesList = document.getElementById('places');
     var error = document.createElement("p");
+    var bannerMsg = document.createElement("bannerMsg")
 
     //Error checking for geolocation
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
+
     }
     else{
         error.textContent = "Geolocation is not supported";
@@ -93,6 +95,7 @@ function startSearch(){
         }
 
         function createMarkers(places) {
+
             var bounds = new google.maps.LatLngBounds();
             var placesList = document.getElementById('places');
 
@@ -105,39 +108,38 @@ function startSearch(){
                     console.log('error');
 
                 }
-
+                // using local storage for data persistence
                 sessionStorage.setItem("placeName" + i, place.name);
                 sessionStorage.setItem("placeLocationLat" + i, place.geometry.location.lat() );
                 sessionStorage.setItem("placeLocationLng" + i, place.geometry.location.lng() );
 
+                // generating containers for the search results
                 var img = document.createElement("img");
                 var restaurantNamePanel = document.createElement('div');
                 var restaurantInfoPanel = document.createElement("div");
                 var restaurantPage = document.createElement('button');
+                var ImgSrc = place.photos[0].getUrl();
 
+                // setting names/pictures, classes for css
                 restaurantInfoPanel.className="infoPanel";
                 restaurantNamePanel.className="namePanel";
                 restaurantNamePanel.textContent = place.name;
-
-                var ImgSrc = place.photos[0].getUrl();
                 img.src = ImgSrc;
-
-                restaurantPage.className="links";
+                restaurantPage.className="button-links";
                 restaurantPage.style.backgroundImage="url(" + ImgSrc + ")";
                 restaurantPage.value=i;
 
+                // implementing the containers
+                placesList.appendChild(restaurantInfoPanel);
                 restaurantInfoPanel.appendChild(restaurantPage);
                 restaurantInfoPanel.appendChild(restaurantNamePanel);
-
-
-                placesList.appendChild(restaurantInfoPanel);
-
 
                 bounds.extend(place.geometry.location);
             }
             restaurants.fitBounds(bounds);
         }
 
+        // sending the restaurant links to the map page
         var places = document.getElementById('places');
 
         $(places).on('click', 'button', function(){
@@ -146,7 +148,4 @@ function startSearch(){
         })
 
     }
-
-
-    a
 }
