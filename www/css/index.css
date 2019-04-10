@@ -36,11 +36,16 @@ a{
     background-color: grey;
 }
 
-li{
-    padding: 3px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: black
+div.namePanel{
+    padding: 5px;
+    font-weight:bolder;
+}
+
+div.infoPanel{
+    padding:10px;
+    border: solid 0.4px black;
+    width: auto;
+    margin: 5px;
 }
 
 p{
@@ -50,9 +55,12 @@ p{
 button.links{
     border:none;
     background-size:cover;
-    padding: 200px 500px;
-    dispaly:inline-block;
-    text-size: 80px;
+    padding: 100px 200px;
+}
+
+#more{
+    padding: 25px 50px;
+    font-size: 15px;
 
 }
 
