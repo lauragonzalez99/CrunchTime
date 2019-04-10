@@ -40,6 +40,7 @@ function startSearch(){
     var error = document.createElement("p");
 
     if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
         error.textContent = "geo location does work";
     }
     else{
@@ -47,7 +48,6 @@ function startSearch(){
     }
 
     placesList.appendChild(error);
-   // showPosition();
 
     function showPosition(position) {
         console.log("show position");
@@ -64,7 +64,7 @@ function startSearch(){
             // Create the map.
             var latlon = {lat: position.coords.latitude , lng: position.coords.longitude };
             error.textContent += latlon;
-            //console.log(latlon);
+
             placesList.appendChild(error);
 
             console.log("position");
@@ -110,26 +110,33 @@ function startSearch(){
 
                 console.log(place);
 
-                //place.icon
                 var photos = place.photos;
                 if(!photos){
                     console.log('error');
 
                 }
 
+                sessionStorage.setItem("placeName" + i, place.name);
+                sessionStorage.setItem("placeLocationLat" + i, place.geometry.location.lat() );
+                sessionStorage.setItem("placeLocationLng" + i, place.geometry.location.lng() );
+
+                console.log(place.geometry.location.lat());
+
                 var img = document.createElement("img");
 
                 var li = document.createElement('li');
                 var div_ = document.createElement("div");
-                var restaurantPage = document.createElement('a');
+                var restaurantPage = document.createElement('button');
 
                 li.textContent = place.name;
 
-                restaurantPage.href = "map.html";
-                restaurantPage.appendChild(img);
-
                 var ImgSrc = place.photos[0].getUrl();
-                img.src =ImgSrc;
+                img.src = ImgSrc;
+
+                restaurantPage.style.backgroundImage="url(" + ImgSrc + ")";
+                restaurantPage.className="links";
+                restaurantPage.textContent=place.name;
+                restaurantPage.value=i;
 
                 div_.appendChild(li);
                 div_.appendChild(restaurantPage);
@@ -142,6 +149,15 @@ function startSearch(){
             restaurants.fitBounds(bounds);
         }
 
+        var places = document.getElementById('places');
+
+        $(places).on('click', 'button', function(){
+            sessionStorage.setItem("selectedRestaurant", this.value);
+            window.location.href = "map.html";
+        })
+
     }
+
+
 
 }

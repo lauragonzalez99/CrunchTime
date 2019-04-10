@@ -1,11 +1,19 @@
 $(document).ready(function(){
-    var map;
     function initMap(){
         map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: -34.397, lng: 150.644},
-            zoom: 8
+            center: {lat: parseFloat(restaurantLocationLat), lng: parseFloat(restaurantLocationLng)},
+            zoom: 19
         });
     };
+
+    var selectedRestaurant = sessionStorage.getItem("selectedRestaurant");
+    console.log(selectedRestaurant + " " + selectedRestaurant);
+    var restaurantName = sessionStorage["placeName" + selectedRestaurant];
+    var restaurantLocationLat = sessionStorage["placeLocationLat" + selectedRestaurant];
+    var restaurantLocationLng = sessionStorage["placeLocationLng" + selectedRestaurant];
+    console.log(restaurantName, restaurantLocationLat );
+    var map;
+
     initMap();
 });
 
