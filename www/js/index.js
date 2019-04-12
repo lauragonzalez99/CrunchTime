@@ -61,7 +61,7 @@ function startSearch(){
             error.textContent += latlon;
 
             // Storing current location
-            restaurants = new google.maps.Map(document.getElementById('restaurantView'), {
+            restaurants = new google.maps.Map(document.getElementsByClassName('restaurantView'), {
                 center: latlon,
                 zoom: 17
             });

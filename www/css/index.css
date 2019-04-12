@@ -7,37 +7,64 @@ body {
     display: block;
 }
 
-#top-bar{
-    padding: 2%;
-    margin-bottom:20px;
+.topBar{
+    width:80%;
+    margin: 0 auto;
+    padding: 20px;
+    overflow:hidden;
 }
 
-#bottom-bar{
-    display: block;
-    float:bottom;
-    margin: 0;
-    bottom:0;
-    position: absolute;
-    background-color: lightgrey;
-    width:100%;
-    text-align: center;
-    overflow: auto;
+#logo{
+    height:85px;
+    width: 150px;
 }
 
-#bottom-bar.col:hover,
-#bottom-bar.col:active{
-    background-color: darkgrey;
+.iconDisplay{
+    display:inline;
+    float:left;
 }
 
-a:hover, a:active{
-    background-color: black;
+.gradient{
+    background-color:beige;
+    background-image:
+            linear-gradient(
+                    to bottom,
+                    lightgray,
+                    white 0.7%
+            );
 }
 
-searchbar{
-    padding: 15px;
+.searchBar{
+    float:left;
+    display:inline;
+    margin-left:20%;
+    width:50%;
+    padding:20px;
+    color:grey;
+    border: none;
 }
-a{
-    background-color: grey;
+
+.searchButton{
+    display:inline;
+    float:left;
+    background: #2196F3;
+    color: white;
+    border-left: none; /* Prevent double borders */
+}
+
+
+.restaurantView{
+    text-align:center;
+}
+
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:center;
+    align-content:center;
+    align-items:center;
 }
 
 div.namePanel{
@@ -45,18 +72,13 @@ div.namePanel{
     text-overflow: ellipsis;
     font-size: 15px;
     font-family: sans-serif;
-
-
 }
 
 div.infoPanel{
     border: none;
     width: auto;
-    margin: 50px 0px 15px 15px;
-}
-
-p{
-    font-size: medium;
+    margin: 50px 0 15px 15px;
+    padding: 5px;
 }
 
 button{
@@ -77,19 +99,9 @@ button:hover{
     transition: 0.3s;
 }
 
-
 #more{
-}
 
-.flex-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content:center;
-    align-content:center;
-    align-items:center;
 }
-
 
 
 

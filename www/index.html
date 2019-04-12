@@ -8,6 +8,7 @@
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
     <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!--Bootstrap-->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -28,13 +29,23 @@
 <body>
 <div class="event received" id="deviceready">
 
-    <header data-role="header">
-        <nav class="navbar navbar-dark bg-warning" id="top-bar"></nav>
-        <div class="searchbar"><input class="form-control" type="search" placeholder="Search" aria-label="Search"></div>
-    </header>
+    <div class="topBar">
+        <div class="iconDisplay">
+            <img src="img/Logo.png" id="logo">
+        </div>
+        <div class="searchBar">
+            <input class="form-control" type="text" placeholder="Search for a restaurant nearby" aria-label="Search">
+        </div>
+        <div class="searchButton">
+            <button type="submit"></button>
+        </div>
 
-    <div id="restaurantView"></div>
-    <div id="places" class="flex-container"></div>
+    </div>
+
+    <div class="restaurantView">
+        <div id="places" class="flex-container gradient"></div>
+    </div>
+
     <button id="more">Load more results</button>
 
 </div>
