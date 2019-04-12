@@ -49,7 +49,7 @@ function startSearch(){
 
 
 
-    function showPosition(position) {
+    function showPosition() {
 
         var restaurants;
         initMap();
@@ -57,11 +57,12 @@ function startSearch(){
         function initMap() {
 
             // Create the map.
-            var latlon = {lat: position.coords.latitude , lng: position.coords.longitude };
+            //var latlon = {lat: position.coords.latitude , lng: position.coords.longitude };
+            var latlon = {lat:-33.867, lng:151.1957362};
             error.textContent += latlon;
 
             // Storing current location
-            restaurants = new google.maps.Map(document.getElementsByClassName('restaurantView'), {
+            restaurants = new google.maps.Map(document.getElementById('restaurantView'), {
                 center: latlon,
                 zoom: 17
             });
@@ -84,7 +85,10 @@ function startSearch(){
             service.nearbySearch(
                 {location: latlon, radius: 1500, type: ['restaurant']},
                 function(results, status, pagination) {
-                    if (status !== 'OK') return;
+                    if (status !== 'OK') {
+                        console.log("results not ok");
+                        return;
+                    }
 
                     createMarkers(results);
                     moreButton.disabled = !pagination.hasNextPage;
@@ -101,7 +105,6 @@ function startSearch(){
 
             for (var i = 0; i < 10; i++) {
                 place = places[i];
-
 
                 var photos = place.photos;
                 if(!photos){
