@@ -42,10 +42,12 @@
 
     </div>
 
-    <div class="restaurantView" id="restaurantView">
+    <div id="page"></div>
 
-    </div>
+    <div class="restaurantView" id="restaurantView"></div>
+
     <div id="places" class="flex-container gradient"></div>
+
     <button id="more">Load more results</button>
 
 </div>
@@ -53,7 +55,8 @@
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcKQuhMx3T7GqjQFS9se0zphzm2iMR0Bk&libraries=places&callback=startSearch" async defer></script>
-
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcKQuhMx3T7GqjQFS9se0zphzm2iMR0Bk&libraries=places&callback=getLocation">
+</script>
 </body>
 </html>
