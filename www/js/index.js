@@ -64,6 +64,16 @@ function initSearch(position){
     }
 }
 
+function repeatSymbolNumTimes(symbol, times) {
+    var repeatedSymbol = "";
+
+    while (times > 0) {
+        repeatedSymbol += symbol;
+        times--;
+    }
+    return repeatedSymbol;
+}
+
 function showRestaurants(place){
 
     var restaurants = document.getElementById('restaurantList');
@@ -80,7 +90,7 @@ function showRestaurants(place){
 
         // settings variables to store JSON responses
         var imgSrc = place[i].photos[0].getUrl();
-        var priceIndicator = (" " + (place[i].price_level * '$'));
+        var priceIndicator = repeatSymbolNumTimes("$",place[i].price_level);
         var addressFormat = place[i].formatted_address.split(",");
         var restaurantAddress = addressFormat[0];
 
@@ -94,7 +104,7 @@ function showRestaurants(place){
         // adding data to containers
         restaurantPage.style.backgroundImage="url(" + imgSrc + ")";
         restaurantNamePanel.textContent = place[i].name;
-        restaurantPricePanel.textContent = "here";
+        restaurantPricePanel.textContent = priceIndicator;
         restaurantDetailPanel.textContent = place[i].rating + starSymbol + ' (' + place[i].user_ratings_total + ' ratings' +  ')';
         restaurantDetailPanel.innerHTML += '<br>' + restaurantAddress;
 
@@ -107,16 +117,14 @@ function showRestaurants(place){
         // appending containers
         restaurants.appendChild(restaurantInfoPanel);
         restaurantInfoPanel.appendChild(restaurantPage);
-        restaurantInfoPanel.appendChild(restaurantNamePanel);
         restaurantInfoPanel.appendChild(restaurantPricePanel);
+        restaurantInfoPanel.appendChild(restaurantNamePanel);
         restaurantInfoPanel.appendChild(restaurantDetailPanel);
 
     }
 
 
-    var places = document.getElementById('places');
-
-    $(places).on('click', 'button', function () {
+    $('.infoPanel').on('click', 'button', function () {
         //context: this;
         sessionStorage.setItem("selectedRestaurant", this.value);
         window.location.href = "map.html";

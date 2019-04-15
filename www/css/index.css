@@ -3,7 +3,7 @@ body {
     font-size:15%;
     height:100%;
     width:100%;
-    background: white;
+    background-color: orange;
     display: block;
 }
 
@@ -20,25 +20,30 @@ body {
 }
 
 .iconDisplay{
+    text-align:center;
 }
 
 .gradient{
-    background-color:beige;
+    background-color:white;
     background-image:
             linear-gradient(
                     to bottom,
                     lightgray,
-                    white 0.7%
+                    white 10%
             );
+
 }
 
 .searchBarContainer{
     width:75%;
+    min-width:530px;
     padding:20px;
     color:grey;
     border: none;
     margin-right:auto;
     margin-left:auto;
+    overflow:auto;
+
 }
 
 .searchBar{
@@ -48,26 +53,28 @@ body {
 
 .searchBarContainer input[type=text]{
     width: 90%;
+    font-style: italic;
+    opacity:0.6;
 }
 
 .searchHeader .searchBarContainer button{
     background: #FFA500;
-    border: solid 1px darkgrey;
-    opacity: 0.7;
+    border: solid 1px grey;
+    opacity: 0.5;
     cursor: pointer;
-    width: 5%;
+    border-radius:10px;
 }
 
 .searchHeader .searchBarContainer button:hover {
     opacity: 1;
-    transition: 0.3s ease;
 }
 
 input:focus {
-    border: 1px solid #FFA500;
+    border: 2px solid #FFA500;
     border-radius:7px;
     outline: none;
     box-shadow: none;
+    opacity:1;
 }
 
 
@@ -81,27 +88,33 @@ input:focus {
 }
 
 .namePanel{
-    float:left;
-    padding: 5px;
+    padding: 1% 1% 0 0%;
     font-size: 15px;
     font-family: sans-serif;
-    width: 50%;
+    width: 90%;
 }
 
 .pricePanel{
-    font-size: 12px;
-    font-family:sans-serif;
+    font: italic lighter 14px sans-serif;
+    text-align: right;
+    color: darkgray;
+    opacity: 0.75;
+    float:right;
+    width: 5%;
+    margin: 1% 4% 0 0;
 }
+
 .detailPanel{
     font-size: 12px;
-    color: darkgray;
+    color: dimgray;
+    text-align:left;
 }
 
 .infoPanel{
     border: none;
     width: auto;
     height:auto;
-    margin: 50px 0 15px 15px;
+    margin: 2%;
     padding: 5px;
 }
 
@@ -120,7 +133,7 @@ button:hover{
     border-radius:7px;
     border: 1px grey;
     background-size:cover;
-    padding: 125px 200px;
+    padding: 125px 190px;
     opacity: 0.75;
     transition: 0.3s;
 }
