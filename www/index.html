@@ -27,36 +27,32 @@
 
 
 <body>
+
 <div class="event received" id="deviceready">
 
     <div class="topBar">
         <div class="iconDisplay">
             <img src="img/Logo.png" id="logo">
         </div>
-        <div class="searchBar">
-            <input class="form-control" type="text" placeholder="Search for a restaurant nearby" aria-label="Search">
-        </div>
-        <div class="searchButton">
-            <button type="submit"></button>
-        </div>
-
     </div>
 
-    <div id="page"></div>
+    <div class="searchHeader">
+        <div class="searchBarContainer">
+                <form action="">
+                    <input class="searchBar" type="text" placeholder="Search for a restaurant nearby" name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+        </div>
+    </div>
 
-    <div class="restaurantView" id="restaurantView"></div>
-
-    <div id="places" class="flex-container gradient"></div>
+    <div id="restaurantList" class="flex-container"> </div>
 
     <button id="more">Load more results</button>
 
 </div>
 
 <script type="text/javascript" src="cordova.js"></script>
+<script aynsc defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcKQuhMx3T7GqjQFS9se0zphzm2iMR0Bk&libraries=places&callback=getLocation"></script>
 <script type="text/javascript" src="js/index.js"></script>
-
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcKQuhMx3T7GqjQFS9se0zphzm2iMR0Bk&libraries=places&callback=getLocation">
-</script>
 </body>
 </html>

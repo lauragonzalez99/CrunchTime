@@ -30,15 +30,14 @@ function getLocation() {
 
     navigator.geolocation;
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(initSearch, onError(), { timeout: 30000, enableHighAccuracy: true });
+        navigator.geolocation.getCurrentPosition(initSearch, onError, { timeout: 30000, enableHighAccuracy: true });
     } else {
         console.log('geolocation unsuccessful')
     }
-}
 
-function onError(){
-    var page= document.getElementById("page");
-    page.textContent+="Geolocation Error";
+    function onError(){
+        console.log('geolocation not working');
+    }
 }
 
 function initSearch(position){
@@ -47,7 +46,6 @@ function initSearch(position){
     var lng= position.coords.longitude;
     var location = new google.maps.LatLng(lat,lng);
 
-
     var request = {
         location:location,
         radius: 1500,
@@ -55,9 +53,7 @@ function initSearch(position){
 
     };
 
-    var page= document.getElementById("page");
-    var restaurantView = document.getElementById("restaurantView");
-    page.textContent+=location;
+    var restaurantView = document.getElementById("restaurantList");
     var service = new google.maps.places.PlacesService(restaurantView);
     service.textSearch(request, callback);
 
@@ -70,16 +66,60 @@ function initSearch(position){
 
 function showRestaurants(place){
 
-    var imgRequestUrl = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=";
-    var API_KEY = "AIzaSyBcKQuhMx3T7GqjQFS9se0zphzm2iMR0Bk";
+    var restaurants = document.getElementById('restaurantList');
+    var starSymbol = '\u2605';
 
-    var restaurantView= document.getElementById("restaurantView");
-    var placesList = document.getElementById("places");
+    for (var i = 0; i < 10; i++){
 
-    var img = document.createElement("img");
-    img.src=imgSrc;
-    restaurantView.append(img);
-    for (var i=0; i < 1; i++){
-        var restaurant = place[i];
+        // declarations for containers
+        var restaurantPage = document.createElement('button');
+        var restaurantNamePanel = document.createElement('div');
+        var restaurantDetailPanel = document.createElement("p");
+        var restaurantInfoPanel = document.createElement('div');
+        var restaurantPricePanel = document.createElement("div");
+
+        // settings variables to store JSON responses
+        var imgSrc = place[i].photos[0].getUrl();
+        var priceIndicator = (" " + (place[i].price_level * '$'));
+        var addressFormat = place[i].formatted_address.split(",");
+        var restaurantAddress = addressFormat[0];
+
+        // settings classes for css
+        restaurantInfoPanel.className="infoPanel";
+        restaurantNamePanel.className="namePanel";
+        restaurantDetailPanel.className="detailPanel";
+        restaurantPricePanel.className="pricePanel";
+        restaurantPage.className="button-links";
+
+        // adding data to containers
+        restaurantPage.style.backgroundImage="url(" + imgSrc + ")";
+        restaurantNamePanel.textContent = place[i].name;
+        restaurantPricePanel.textContent = "here";
+        restaurantDetailPanel.textContent = place[i].rating + starSymbol + ' (' + place[i].user_ratings_total + ' ratings' +  ')';
+        restaurantDetailPanel.innerHTML += '<br>' + restaurantAddress;
+
+        // using local storage for data persistence
+        sessionStorage.setItem("placeName" + i, place.name);
+        sessionStorage.setItem("placeLocationLat" + i, place[i].geometry.location.lat() );
+        sessionStorage.setItem("placeLocationLng" + i, place[i].geometry.location.lng() );
+        restaurantPage.value=i;
+
+        // appending containers
+        restaurants.appendChild(restaurantInfoPanel);
+        restaurantInfoPanel.appendChild(restaurantPage);
+        restaurantInfoPanel.appendChild(restaurantNamePanel);
+        restaurantInfoPanel.appendChild(restaurantPricePanel);
+        restaurantInfoPanel.appendChild(restaurantDetailPanel);
+
     }
+
+
+    var places = document.getElementById('places');
+
+    $(places).on('click', 'button', function () {
+        //context: this;
+        sessionStorage.setItem("selectedRestaurant", this.value);
+        window.location.href = "map.html";
+    })
+
 }
