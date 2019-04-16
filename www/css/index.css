@@ -3,8 +3,9 @@ body {
     font-size:15%;
     height:100%;
     width:100%;
-    background-color: orange;
+    background-color: #FFFFFF;
     display: block;
+
 }
 
 .topBar{
@@ -31,12 +32,11 @@ body {
                     lightgray,
                     white 10%
             );
-
 }
 
 .searchBarContainer{
     width:75%;
-    min-width:530px;
+    white-space:nowrap;
     padding:20px;
     color:grey;
     border: none;
@@ -48,13 +48,13 @@ body {
 
 .searchBar{
     border: solid 1px darkgrey;
-    border-radius: 7px;
 }
 
 .searchBarContainer input[type=text]{
     width: 90%;
     font-style: italic;
     opacity:0.6;
+    font-size:medium;
 }
 
 .searchHeader .searchBarContainer button{
@@ -88,17 +88,17 @@ input:focus {
 }
 
 .namePanel{
-    padding: 1% 1% 0 0%;
+    padding: 1% 1% 0 2%;
     font-size: 15px;
     font-family: sans-serif;
     width: 90%;
+    text-align:left;
 }
 
 .pricePanel{
-    font: italic lighter 14px sans-serif;
+    font: italic 14px sans-serif;
     text-align: right;
     color: darkgray;
-    opacity: 0.75;
     float:right;
     width: 5%;
     margin: 1% 4% 0 0;
@@ -108,14 +108,37 @@ input:focus {
     font-size: 12px;
     color: dimgray;
     text-align:left;
+    margin-left:2%;
 }
 
 .infoPanel{
     border: none;
     width: auto;
     height:auto;
-    margin: 2%;
-    padding: 5px;
+    margin: 0.75%;
+    padding: 15px;
+    box-shadow: 2px 5px 10px darkgrey;
+    text-align:center;
+    border-radius: 3px;
+    flex-basis:0;
+    transition: top ease 0.5s;
+    top: 0;
+    position:relative;
+}
+
+
+.statusPanel{
+    margin:0;
+    padding:0;
+    font-size: 13px;
+}
+.open{
+    font-weight:bold;
+    color:#8BE674;
+}
+.closed{
+    font-weight:normal;
+    color: orangered;
 }
 
 button{
@@ -123,21 +146,25 @@ button{
     width:auto;
     border-radius: 7%;
 
+
 }
 
-button:hover{
-    opacity:1;
+#more{
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5% 10% 5% 10%;
+}
+.infoPanel:hover{
+    top: -10px;
 }
 
 .button-links{
-    border-radius:7px;
+    border-radius:3px;
     border: 1px grey;
     background-size:cover;
     padding: 125px 190px;
-    opacity: 0.75;
     transition: 0.3s;
 }
-
-
 
 

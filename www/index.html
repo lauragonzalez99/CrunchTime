@@ -39,17 +39,15 @@
 
     <div class="searchHeader gradient">
         <div class="searchBarContainer">
-                <form action="">
-                    <input class="searchBar" type="text" placeholder=" Search for a restaurant nearby..." name="search">
-                    <button type="submit"><i class="fa fa-search"></i></button>
+                <form action="index.html">
+                    <input class="searchBar" id = "searchInput" type="text" onkeyup="findRestaurant()" placeholder=" Search for a restaurant nearby..." name="search">
+                    <button type="submit" ><i class="fa fa-search"></i></button>
                 </form>
         </div>
     </div>
 
-    <div id="restaurantList" class="flex-container"></div>
-
-    <button id="more">Load more results</button>
-
+    <div id="restaurantList" class="flex-container"> </div>
+    <button id="more">Load More Results &#x2192</button>
 
 </div>
 
