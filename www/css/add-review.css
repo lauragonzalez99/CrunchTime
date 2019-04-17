@@ -1,0 +1,31 @@
+body {
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:15%;
+    height:100%;
+    width:100%;
+    background-color: #FFFFFF;
+    display: block;
+    margin: 1%;
+
+}
+
+h2{
+    text-align: center;
+}
+
+.topBar{
+    width:80%;
+    margin: 0 auto;
+    padding: 20px;
+    overflow:hidden;
+}
+
+#logo{
+    height:85px;
+    width: 150px;
+}
+
+img{
+    width: 20%;
+    height: 20%;
+}

@@ -156,7 +156,7 @@ function showRestaurants(place, number){
         }
 
         // using local storage for data persistence
-        sessionStorage.setItem("placeName" + i, place.name);
+        sessionStorage.setItem("placeName" + i, place[i].name);
         sessionStorage.setItem("placeLocationLat" + i, place[i].geometry.location.lat() );
         sessionStorage.setItem("placeLocationLng" + i, place[i].geometry.location.lng() );
         restaurantPage.value=i;

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Security-Policy">
+<meta name="format-detection" content="telephone=no">
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+<link rel="stylesheet" type="text/css" href="css/add-review.css">
+
+<!--Bootstrap-->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<!--jQuery-->
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<!--Icons-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+<title>User Uploads</title>
+
+</head>
+<body>
+<div class="event received" id="deviceready">
+
+    <div class="topBar">
+        <div>
+            <img src="img/Logo.png" id="logo">
+        </div>
+    </div>
+
+    <main role="main" class="container">
+        <form method="post" id="review_form" class="form-horizontal">
+
+            <h2>Review Form</h2>
+
+            <form class="form-inline">
+                <label id="starsQuestion" class="my-1 mr-2" for="star-rating">How many stars ?</label>
+                <select class="custom-select my-1 mr-sm-2" id="star-rating">
+                    <option selected>Choose...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+
+                <a id="takePhoto" class="btn btn-success btn-md" href="#" role="button">
+                    Get Picture
+                </a>
+
+                <div id="uploaded" class="ui-field-contain">
+                    <label for="photo">Uploaded:</label>
+                    <img id="photo" data-inline="true" alt=""  src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
+                </div>
+
+            </form>
+
+            <button type="submit" id="btnsubmit" class="btn btn-primary my-1">Submit</button>
+
+            <img id="my-img" alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+
+            <img src="gs://crunchtimereviews-8cd97.appspot.com/images/Bombay Bhel Restaurant2019-4-16-19:42:30.jpg" alt="storage location">
+
+            <img alt="download url" src="https://firebasestorage.googleapis.com/v0/b/crunchtimereviews-8cd97.appspot.com/o/images%2FBombay%20Bhel%20Restaurant2019-4-16-19%3A42%3A30.jpg?alt=media&token=bbf51ce6-9b5d-405e-82a9-6b24b0b77655">
+
+        </form>
+
+    </main>
+
+</div>
+
+<script defer src="https://www.gstatic.com/firebasejs/5.9.4/firebase-app.js"></script>
+<!-- Add Firebase products that you want to use -->
+<!--Store images and user content-->
+<script defer src="https://www.gstatic.com/firebasejs/5.9.4/firebase-storage.js"></script>
+<!--REALTIME database with JSON -->
+<script defer src="https://www.gstatic.com/firebasejs/5.9.4/firebase-database.js"></script>
+
+<script defer src="js/add-review.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+
+
+</body>
+</html>
