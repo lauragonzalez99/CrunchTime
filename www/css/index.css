@@ -43,7 +43,7 @@ body {
     margin-right:auto;
     margin-left:auto;
     overflow:auto;
-
+    text-align:center;
 }
 
 .searchBar{
@@ -55,14 +55,16 @@ body {
     font-style: italic;
     opacity:0.6;
     font-size:medium;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
 }
 
 .searchHeader .searchBarContainer button{
-    background: #FFA500;
-    border: solid 1px grey;
+    background: none;
+    border: none;
     opacity: 0.5;
     cursor: pointer;
-    border-radius:10px;
 }
 
 .searchHeader .searchBarContainer button:hover {
@@ -124,6 +126,7 @@ input:focus {
     transition: top ease 0.5s;
     top: 0;
     position:relative;
+    font-weight:300;
 }
 
 
@@ -133,11 +136,11 @@ input:focus {
     font-size: 13px;
 }
 .open{
-    font-weight:bold;
+    font-weight:400;
     color:#8BE674;
 }
 .closed{
-    font-weight:normal;
+    font-weight:200;
     color: orangered;
 }
 
@@ -149,11 +152,17 @@ button{
 
 }
 
-#more{
+.loadButton{
     background: none;
     border: none;
     cursor: pointer;
     padding: 5% 10% 5% 10%;
+    color:darkorange;
+    font-weight:100;
+}
+
+#less{
+    display: none;
 }
 .infoPanel:hover{
     top: -10px;

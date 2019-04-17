@@ -56,20 +56,42 @@ function initSearch(position){
     // creating the Places Service
     var restaurantView = document.getElementById("restaurantList");
     var moreButton = document.getElementById('more');
-
+    var lessButton = document.getElementById('less');
     var service = new google.maps.places.PlacesService(restaurantView);
 
     service.textSearch(request, function(results,status) {
         if (status !== 'OK') return;
 
-        showRestaurants(results,0);
+        showRestaurants(results,10);
 
         moreButton.onclick = function(){
-            showRestaurants(results,10);
-
+            showRestaurants(results,5);
+            this.style.display="none";
+            toggleButton(lessButton);
         }
 
+        lessButton.onclick = function(){
+            collapseRestaurants(5);
+            this.style.display="none";
+            toggleButton(moreButton);
+        }
     });
+}
+
+function toggleButton(button){
+    if (button.style.display=='block'){
+        button.style.display='none';
+    }
+    else{
+        button.style.display='block';
+    }
+}
+
+function collapseRestaurants(number){
+    var restaurantList = document.getElementById("restaurantList");
+    for (var i = number; i > 0; i--){
+        restaurantList.removeChild(restaurantList.lastChild);
+    }
 }
 
 function repeatSymbolNumTimes(symbol, times) {
@@ -109,13 +131,13 @@ function findRestaurant(){
     }
 
 }
+
 function showRestaurants(place, number){
 
     var restaurants = document.getElementById('restaurantList');
-
     var starSymbol = '\u2605';
 
-    for (var i = number; i < (number+10); i++){
+    for (var i = 0; i < (number); i++){
 
         // declarations for containers
         var restaurantPage = document.createElement('button');
@@ -170,9 +192,6 @@ function showRestaurants(place, number){
         restaurantDetailPanel.appendChild(restaurantStatusPanel);
 
     }
-
-    var moreButton = document.getElementById("more");
-    restaurants.appendChild(moreButton);
 
 
     $('.infoPanel').on('click', 'button', function () {
