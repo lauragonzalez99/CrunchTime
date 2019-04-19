@@ -1,4 +1,3 @@
-
 var app = {
     // Application Constructor
     initialize: function() {
@@ -30,7 +29,10 @@ function getLocation() {
 
     navigator.geolocation;
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(initSearch, onError, { timeout: 30000, enableHighAccuracy: true });
+        navigator.geolocation.getCurrentPosition(function(position){
+                initSearch(position,1500, 'restaurant')},
+            onError,
+            { timeout: 30000, enableHighAccuracy: true });
     } else {
         console.log('geolocation unsuccessful')
     }
@@ -40,7 +42,7 @@ function getLocation() {
     }
 }
 
-function initSearch(position){
+function initSearch(position, distance, input){
 
     var lat= position.coords.latitude;
     var lng= position.coords.longitude;
@@ -48,8 +50,8 @@ function initSearch(position){
 
     var request = {
         location:location,
-        radius: 1500,
-        query: ['restaurant']
+        radius: distance,
+        query: [input]
 
     };
 
@@ -68,13 +70,14 @@ function initSearch(position){
             showRestaurants(results,5);
             this.style.display="none";
             toggleButton(lessButton);
-        }
+        };
 
         lessButton.onclick = function(){
             collapseRestaurants(5);
             this.style.display="none";
             toggleButton(moreButton);
-        }
+        };
+
     });
 }
 
@@ -113,31 +116,43 @@ function checkIfOpen(status){
     }
 }
 
-function findRestaurant(){
-    var input, filter, infoPanel, txtValue, i, restaurantList, namePanel;
+
+function matchRestaurant(){
+    var input, filter, restaurantList, infoPanel, namePanel, i, txtValue;
     input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
     restaurantList = document.getElementById("restaurantList");
-    filter = input.value.toUpperCase().trim();
     infoPanel = restaurantList.getElementsByClassName("infoPanel");
 
-    for (i=0; i<infoPanel.length;i++){
-        namePanel = infoPanel[i].getElementsByClassName("namePanel");
-        txtValue=namePanel.textContent;
+    for (i=0; i < infoPanel.length; i++){
+        namePanel = infoPanel[i].getElementsByClassName("namePanel")[0];
+        txtValue=(namePanel.textContent || namePanel.innerText);
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
             infoPanel[i].style.display = "";
         }else{
             infoPanel[i].style.display="none";
         }
     }
-
 }
-
 function showRestaurants(place, number){
 
     var restaurants = document.getElementById('restaurantList');
     var starSymbol = '\u2605';
 
-    for (var i = 0; i < (number); i++){
+    //this checks if the show restaurants function is being called for the first time or
+    //when load more is called
+    var begin = 0;
+    if (number === 5){
+        begin = 10;
+        number += begin;
+    }
+    else{
+        begin = 0;
+    }
+
+    for (var i = begin; i < (number); i++){
+
+        console.log(place[i]);
 
         // declarations for containers
         var restaurantPage = document.createElement('button');
@@ -200,4 +215,8 @@ function showRestaurants(place, number){
         window.location.href = "map.html";
     })
 
+
+
 }
+
+$(document).ready(getLocation);

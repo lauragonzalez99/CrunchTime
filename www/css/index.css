@@ -52,6 +52,7 @@ body {
 
 .searchBarContainer input[type=text]{
     width: 90%;
+    min-width:200px;
     font-style: italic;
     opacity:0.6;
     font-size:medium;
@@ -175,5 +176,3 @@ button{
     padding: 125px 190px;
     transition: 0.3s;
 }
-
-

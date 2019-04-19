@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 <head>
 
     <meta http-equiv="Content-Security-Policy" />
@@ -33,27 +33,27 @@
 
     <div class="topBar">
         <div class="iconDisplay">
-            <img src="img/Logo.png" id="logo">
+            <img src="img/Logo.png" alt='logo' id="logo">
         </div>
     </div>
 
     <div class="searchHeader gradient">
         <div class="searchBarContainer">
-                <form action="index.html">
-                    <input class="searchBar" id = "searchInput" type="text" onkeyup="findRestaurant()" placeholder=" Search for a restaurant nearby..." name="search">
-                    <button type="submit" ><i class="fa fa-search"></i></button>
-                </form>
+            <form action="index.html">
+                <input class="searchBar" id = "searchInput" type="text" onkeyup="matchRestaurant()" placeholder=" Find a restaurant..." name="search">
+                <button id="textSearch"><i class="fa fa-search"></i></button>
+            </form>
+
+
         </div>
     </div>
 
     <div id="restaurantList" class="flex-container"> </div>
     <button class="loadButton" id="more">Load more &#x2192</button>
     <button class="loadButton" id="less">&#8592 Show less </button>
-
 </div>
-
-<script type="text/javascript" src="cordova.js"></script>
-<script aynsc defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcKQuhMx3T7GqjQFS9se0zphzm2iMR0Bk&libraries=places&callback=getLocation"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcKQuhMx3T7GqjQFS9se0zphzm2iMR0Bk&libraries=places&callback=getLocation"></script>
 <script type="text/javascript" src="js/index.js"></script>
+
 </body>
 </html>

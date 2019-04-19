@@ -16,7 +16,6 @@ function initApp(){
 
     $('#starsQuestion').text('How many stars would you rate your experience at ' + currentRestaurant + "?");
 
-    // TODO: Replace the following with your app's Firebase project configuration
     var firebaseConfig = {
         apiKey: "AIzaSyB612eJOXAlYne6DOBGw86mtDVx9VCVGYI",
         authDomain: "crunchtimereviews-8cd97.firebaseapp.com",
@@ -30,8 +29,8 @@ function initApp(){
     firebase.initializeApp(firebaseConfig);
 
     var rootRef = firebase.database().ref();
-    function writeUserData(username,rating, restaurant, imageUrl, date) {
-        firebase.database().ref('reviews/' + restaurant + '/' + username + '/' + date).set({
+    function writeUserData(username,rating, restaurant, imageUrl) {
+        firebase.database().ref('reviews/' + restaurant + '/' + username).set({
             username: username,
             restaurant: restaurant,
             rating: rating,
@@ -79,13 +78,14 @@ function initApp(){
 
     $submit.click(function(event){
         event.preventDefault();
+
         var today = new Date();
         var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
         var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
         var dateTime = date+'-'+time;
 
 
-        var downloadurl = dataurl;
+        // var downloadurl = dataurl;
         var dataurl = $photo.attr("src");
 
         if( dataurl !== fakeImage ){
@@ -100,11 +100,9 @@ function initApp(){
 
                 imageRef.put(blob).then(function(snapshot) {
 
-                    //navigator.notification.alert('Photo uploaded!');
-
                     imageRef.getDownloadURL().then(function(url) {
                         //downloadurl = url;
-                        writeUserData("user1", selectedRating, currentRestaurant, url, dateTime);
+                        writeUserData("user1", selectedRating, currentRestaurant, url);
                         navigator.notification.alert('Review uploaded!');
 
                     }).catch(function(error) {
@@ -119,7 +117,7 @@ function initApp(){
             }
 
         } else {
-            writeUserData("user1", selectedRating, currentRestaurant, '', dateTime);
+            writeUserData("user1", selectedRating, currentRestaurant, '');
         }
 
         $form.reset();
@@ -136,10 +134,3 @@ function initApp(){
         return new Blob([u8arr], {type:mime});
     }
 }
-
-
-
-//testing
-
-
-
