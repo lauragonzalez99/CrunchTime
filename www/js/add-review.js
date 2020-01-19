@@ -17,12 +17,12 @@ function initApp(){
     $('#starsQuestion').text('How many stars would you rate your experience at ' + currentRestaurant + "?");
 
     var firebaseConfig = {
-        apiKey: "AIzaSyB612eJOXAlYne6DOBGw86mtDVx9VCVGYI",
-        authDomain: "crunchtimereviews-8cd97.firebaseapp.com",
-        databaseURL: "https://crunchtimereviews-8cd97.firebaseio.com",
-        projectId: "crunchtimereviews-8cd97",
-        storageBucket: "crunchtimereviews-8cd97.appspot.com",
-        messagingSenderId: "109223634195"
+        apiKey: "yourAPIKey",
+        authDomain: "YourProjectID.firebaseapp.com",
+        databaseURL: "https://YourProjectID.firebaseio.com",
+        projectId: "yourProjectID",
+        storageBucket: "yourProjectID.appspot.com",
+        messagingSenderId: "__"
     };
 
     // Initialize Firebase
