@@ -24,7 +24,7 @@ function initMap() {
 function loadPhotos(restaurantName){
 
     var firebaseConfig = {
-        apiKey: "AIzaSyB612eJOXAlYne6DOBGw86mtDVx9VCVGYI",
+        apiKey: "yourAPIkey",
         authDomain: "crunchtimereviews-8cd97.firebaseapp.com",
         databaseURL: "https://crunchtimereviews-8cd97.firebaseio.com",
         projectId: "crunchtimereviews-8cd97",
