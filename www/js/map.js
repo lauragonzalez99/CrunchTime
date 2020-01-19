@@ -25,11 +25,11 @@ function loadPhotos(restaurantName){
 
     var firebaseConfig = {
         apiKey: "yourAPIkey",
-        authDomain: "crunchtimereviews-8cd97.firebaseapp.com",
-        databaseURL: "https://crunchtimereviews-8cd97.firebaseio.com",
-        projectId: "crunchtimereviews-8cd97",
-        storageBucket: "crunchtimereviews-8cd97.appspot.com",
-        messagingSenderId: "109223634195"
+        authDomain: "yourProjectID.firebaseapp.com",
+        databaseURL: "https://yourProjectID.firebaseio.com",
+        projectId: "yourProjectID",
+        storageBucket: "yourProjectID.appspot.com",
+        messagingSenderId: "_"
     };
 
     // Initialize Firebase
